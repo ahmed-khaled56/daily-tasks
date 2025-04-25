@@ -9,6 +9,11 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: TasksView());
+    return MaterialApp(
+      theme: ThemeData(brightness: Brightness.dark, fontFamily: "Poppins"),
+      debugShowCheckedModeBanner: false,
+
+      home: TasksView(),
+    );
   }
 }
