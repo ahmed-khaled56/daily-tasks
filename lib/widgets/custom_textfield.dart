@@ -10,6 +10,7 @@ class textField extends StatelessWidget {
   final TextInputType? textType;
 
   textField({
+    super.key,
     required this.hintText,
 
     @required this.textType,
