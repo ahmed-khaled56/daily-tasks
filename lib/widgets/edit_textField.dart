@@ -7,13 +7,11 @@ class EditTextfield extends StatelessWidget {
   //final String data;
 
   void Function(String?)? onchange;
-  final TextInputType? textType;
 
   EditTextfield({
     super.key,
     required this.hintText,
 
-    @required this.textType,
     required this.onchange,
 
     this.maxLines = 1,
@@ -28,7 +26,6 @@ class EditTextfield extends StatelessWidget {
         onChanged: onchange,
 
         maxLines: maxLines,
-        keyboardType: textType,
 
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),

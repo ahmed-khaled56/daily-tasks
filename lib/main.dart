@@ -1,3 +1,4 @@
+import 'package:daily_tasks/views/edit_view.dart';
 import 'package:daily_tasks/views/tasks_view.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(brightness: Brightness.dark, fontFamily: "Poppins"),
       debugShowCheckedModeBanner: false,
-
+      routes: {EditView.id: (context) => EditView()},
       home: TasksView(),
     );
   }
