@@ -40,7 +40,7 @@ class _TaskItemState extends State<TaskItem> {
                 trailing: IconButton(
                   onPressed: () {},
 
-                  icon: Icon(Icons.delete, size: 30),
+                  icon: Icon(Icons.delete, size: 40),
                 ),
               ),
               Row(
@@ -50,19 +50,14 @@ class _TaskItemState extends State<TaskItem> {
                     child: IconButton(
                       padding: EdgeInsets.zero,
                       onPressed: () {
-                        isPressed = true;
+                        isPressed = !isPressed;
                         setState(() {});
                       },
-                      icon:
-                          isPressed
-                              ? CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.green,
-                              )
-                              : CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.white,
-                              ),
+                      icon: CircleAvatar(
+                        radius: 20,
+                        backgroundColor:
+                            isPressed ? Colors.green : Colors.white,
+                      ),
                     ),
                   ),
                   Padding(
