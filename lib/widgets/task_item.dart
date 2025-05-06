@@ -40,7 +40,7 @@ class _TaskItemState extends State<TaskItem> {
                 trailing: IconButton(
                   onPressed: () {},
 
-                  icon: Icon(Icons.delete, size: 40),
+                  icon: Icon(color: Colors.white, Icons.delete, size: 40),
                 ),
               ),
               Row(
