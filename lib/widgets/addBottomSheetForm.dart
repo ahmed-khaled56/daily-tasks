@@ -1,9 +1,11 @@
+import 'package:daily_tasks/cubits/add_task_cubit/add_task_cubit.dart';
 import 'package:daily_tasks/models/task_model.dart';
 import 'package:daily_tasks/widgets/add_color_list.dart';
 import 'package:daily_tasks/widgets/custom_button.dart';
 import 'package:daily_tasks/widgets/custom_textForm_field.dart';
 import 'package:daily_tasks/widgets/edit_colorList.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 String? Taskname;
@@ -55,6 +57,7 @@ class _AddbottomsheetformState extends State<Addbottomsheetform> {
                   color: Colors.blue.hashCode,
                   date: formatedDte,
                 );
+                BlocProvider.of<AddTaskCubit>(context).addTask(task);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
