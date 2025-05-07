@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 const kPrimaryColor = Color(0xff62fcd7);
+const String kBoxName='taskes box';
 
 List<Color> kColorsList = const [
   Color(0xffF25C54),
