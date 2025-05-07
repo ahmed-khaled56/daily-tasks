@@ -19,7 +19,7 @@ class TaskModelAdapter extends TypeAdapter<TaskModel> {
     return TaskModel(
       lable: fields[0] as String?,
       sublable: fields[1] as String?,
-      color: fields[2] as String?,
+      color: fields[2] as int?,
       date: fields[3] as String?,
     );
   }
