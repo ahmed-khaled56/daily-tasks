@@ -1,4 +1,5 @@
 import 'package:daily_tasks/cubits/add_task_cubit/add_task_cubit.dart';
+import 'package:daily_tasks/cubits/add_task_cubit/add_task_states.dart';
 import 'package:daily_tasks/models/task_model.dart';
 import 'package:daily_tasks/widgets/add_color_list.dart';
 import 'package:daily_tasks/widgets/custom_button.dart';
@@ -46,22 +47,27 @@ class _AddbottomsheetformState extends State<Addbottomsheetform> {
           SizedBox(height: 40),
           EditColorlist(),
           SizedBox(height: 100),
-          CustomButton(
-            label: "Add",
-            onPressed: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                var task = TaskModel(
-                  lable: Taskname,
-                  sublable: content,
-                  color: Colors.blue.hashCode,
-                  date: formatedDte,
-                );
-                BlocProvider.of<AddTaskCubit>(context).addTask(task);
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
+          BlocBuilder<AddTaskCubit, AddTaskStates>(
+            builder: (context, state) {
+              return CustomButton(
+                isLoading: state is LoadingAddTaskState ? true : false,
+                label: "Add",
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    var task = TaskModel(
+                      lable: Taskname,
+                      sublable: content,
+                      color: Colors.blue.hashCode,
+                      date: formatedDte,
+                    );
+                    BlocProvider.of<AddTaskCubit>(context).addTask(task);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+              );
             },
           ),
         ],

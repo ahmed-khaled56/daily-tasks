@@ -27,14 +27,19 @@ class _AddbottomsheetbodyState extends State<Addbottomsheetbody> {
           ),
           child: BlocConsumer<AddTaskCubit, AddTaskStates>(
             listener: (context, state) {
-              if (state is SuccessAddTaskState) {
+              if (state is LoadingAddTaskState) {
+                CircularProgressIndicator();
+              } else if (state is SuccessAddTaskState) {
                 Navigator.pop(context);
               } else if (state is FailureAddTaskState) {
-                print('task nit added');
+                print('task not added');
               }
             },
             builder: (context, state) {
-              return Addbottomsheetform();
+              return AbsorbPointer(
+                absorbing: state is LoadingAddTaskState ? true : false,
+                child: Addbottomsheetform(),
+              );
             },
           ),
         ),

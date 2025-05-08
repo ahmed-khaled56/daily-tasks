@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
+  final bool? isLoading;
 
   void Function() onPressed;
 
-  CustomButton({super.key, required this.label, required this.onPressed});
+  CustomButton({
+    super.key,
+    required this.label,
+    required this.onPressed,
+    this.isLoading,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,10 @@ class CustomButton extends StatelessWidget {
         height: 40,
         width: MediaQuery.of(context).size.width,
         child: Center(
-          child: Text(label, style: TextStyle(color: Colors.black)),
+          child:
+              isLoading == false
+                  ? Text(label, style: TextStyle(color: Colors.black))
+                  : Center(child: SizedBox(child: CircularProgressIndicator())),
         ),
       ),
     );
