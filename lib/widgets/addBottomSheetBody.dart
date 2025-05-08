@@ -1,5 +1,6 @@
 import 'package:daily_tasks/cubits/add_task_cubit/add_task_cubit.dart';
 import 'package:daily_tasks/cubits/add_task_cubit/add_task_states.dart';
+import 'package:daily_tasks/cubits/fetch_task_cubit/fetch_task_cubit.dart';
 import 'package:daily_tasks/widgets/addBottomSheetForm.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class _AddbottomsheetbodyState extends State<Addbottomsheetbody> {
                 CircularProgressIndicator();
               } else if (state is SuccessAddTaskState) {
                 Navigator.pop(context);
+                BlocProvider.of<FetchTaskCubit>(context).fetchTask();
               } else if (state is FailureAddTaskState) {
                 print('task not added');
               }

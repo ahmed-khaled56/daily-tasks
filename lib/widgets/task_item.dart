@@ -1,15 +1,12 @@
+import 'package:daily_tasks/models/task_model.dart';
+import 'package:daily_tasks/widgets/task_done.dart';
 import 'package:flutter/material.dart';
 
-class TaskItem extends StatefulWidget {
-  const TaskItem({super.key});
-
+class TaskItem extends StatelessWidget {
+  TaskItem({super.key, required this.task});
+  final TaskModel task;
   @override
-  State<TaskItem> createState() => _TaskItemState();
-}
-
-class _TaskItemState extends State<TaskItem> {
   @override
-  bool isPressed = false;
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -27,11 +24,12 @@ class _TaskItemState extends State<TaskItem> {
             children: [
               ListTile(
                 title: Text(
-                  'play fetniss',
+                  task.lable!,
+
                   style: TextStyle(fontSize: 30, color: Colors.black),
                 ),
                 subtitle: Text(
-                  'i will play footballl ',
+                  task.sublable!,
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black.withAlpha(120),
@@ -47,18 +45,7 @@ class _TaskItemState extends State<TaskItem> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 40, left: 5),
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () {
-                        isPressed = !isPressed;
-                        setState(() {});
-                      },
-                      icon: CircleAvatar(
-                        radius: 20,
-                        backgroundColor:
-                            isPressed ? Colors.green : Colors.white,
-                      ),
-                    ),
+                    child: TaskDone(),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -67,7 +54,7 @@ class _TaskItemState extends State<TaskItem> {
                       bottom: 10,
                     ),
                     child: Text(
-                      "11/10/2025",
+                      task.date!,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black.withAlpha(120),
